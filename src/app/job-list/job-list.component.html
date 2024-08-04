@@ -1,0 +1,51 @@
+<div class="container">
+  <div class="logo-title">
+    <img src="https://cdn-icons-png.flaticon.com/128/1589/1589592.png" alt="Logo" class="logo" />
+    <h1 class="main-title">Jobbyz</h1>
+  </div>
+
+  <header class="header">
+    <h2 class="title">Explore Job Opportunities</h2>
+    <p class="subtitle">Find the best jobs tailored to your skills and interests.</p>
+  </header>
+  
+  <section class="cta-buttons">
+    <button *ngFor="let category of categories" (click)="fetchJobs(category)" class="cta-button">
+      {{ category | customUppercase }}
+    </button>
+  </section>
+
+  <section *ngIf="jobs.length > 0" class="job-list">
+    <div *ngFor="let job of jobs" class="job-card">
+      <div class="job-card-content">
+        <h3 class="job-title">{{ job.job }}</h3>
+        <p class="company-name">{{ job.company }}</p>
+        <p class="job-details">
+          <strong>Experience:</strong> {{ job.experience }} <br>
+          <strong>Location:</strong> {{ job.location }} <br>
+          <strong>Salary:</strong> {{ job.salary }}
+        </p>
+        <a [href]="job.joblink" target="_blank" class="apply-button">Apply Now</a>
+      </div>
+    </div>
+  </section>
+
+  <section *ngIf="jobs.length === 0" class="no-jobs">
+    <p>No jobs available for the selected category.</p>
+  </section>
+
+  <section class="why-choose-us">
+    <h2>Why Choose Our Job Portal?</h2>
+    <p>We provide a tailored job search experience with features that help you find the perfect job faster and easier. Our platform offers:</p>
+    <ul>
+      <li>Comprehensive job listings from various industries.</li>
+      <li>Easy-to-use interface for quick job searches.</li>
+      <li>Personalized recommendations based on your skills and preferences.</li>
+      <li>Regular updates with the latest job openings.</li>
+    </ul>
+  </section>
+
+  <footer class="footer">
+    <p>&copy; 2024 Job Portal. All rights reserved.</p>
+  </footer>
+</div>
